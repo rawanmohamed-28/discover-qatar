@@ -1,2 +1,2 @@
-# discover-qatar
+# Discover Qatar
 
