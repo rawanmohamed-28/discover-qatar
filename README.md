@@ -9,3 +9,6 @@ The Discover Qatar website incorporates styles of elegance for hospitality and c
 In terms of typography, the font family is Jotia. 
           Jotia Medium for headings 
           Jotia Light for normal text 
+
+<h2>Logo</h2>
+<img>logo.png</img>
