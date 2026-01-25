@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan Your Trip | Discover Qatar</title>
+<style>
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  font-family: 'Optima', sans-serif;
+  color: #222;
+  background-color: #fff;
+  line-height: 1.6;
+}
+ 
+/* Header */
+.main-header {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+ 
+.logo {
+  height: 60px;
+}
+ 
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+ 
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+ 
+nav ul li a:hover,
+nav ul li a.active {
+  color: #8C1D40;
+}
+ 
+/* Hero Section */
+.hero {
+  background-size: cover;
+  background-position: center;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  margin-top: 80px;
+  width: 100%;
+}
+ 
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+ 
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 20px;
+}
+ 
+.hero h1 {
+  font-size: 52px;
+  margin-bottom: 10px;
+}
+ 
+.hero p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+ 
+.btn {
+  background: #8C1D40;
+  color: #fff;
+  padding: 14px 35px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+}
+ 
+.btn:hover {
+  background: #A12852;
+  transform: translateY(-3px);
+}
+
+/* Tabs Section */
+.tabs-section {
+  text-align: center;
+  padding: 60px 20px 40px;
+  background: #fff;
+  max-width: 1300px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: #fff;
+  border: 2px solid #e0e0e0;
+  padding: 12px 28px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #333;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  border-color: #0C616F;
+  color: #0C616F;
+}
+
+.tab-btn.active {
+  background: #0C616F;
+  color: #fff;
+  border-color: #0C616F;
+}
+
+/* Content Section */
+.content-section {
+  text-align: center;
+  padding: 0 20px 80px;
+  background: #fff;
+  max-width: 1300px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.section-header {
+  margin-bottom: 50px;
+}
+
+.section-header h2 {
+  font-size: 36px;
+  color: #0C616F;
+  margin-bottom: 10px;
+}
+
+.section-header p {
+  color: #666;
+  font-size: 17px;
+}
+
+/* Cards Grid */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+ 
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  width: 320px;
+  max-width: 100%;
+  padding: 15px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+ 
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+ 
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+ 
+.card h3 {
+  font-size: 22px;
+  color: #0C616F;
+  margin-bottom: 8px;
+}
+ 
+.card p {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+/* Info Box for Airport/Visa */
+.info-box {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 40px;
+  text-align: left;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.info-box h3 {
+  color: #0C616F;
+  font-size: 24px;
+  margin-bottom: 15px;
+  margin-top: 30px;
+}
+
+.info-box h3:first-child {
+  margin-top: 0;
+}
+
+.info-box p {
+  color: #444;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.info-box ul {
+  margin: 15px 0;
+  padding-left: 25px;
+}
+
+.info-box ul li {
+  margin-bottom: 10px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.map-container {
+  margin-top: 30px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+}
+
+/* Footer */
+footer {
+  background: #f7f7f7;
+  padding: 60px 20px;
+  border-top: 1px solid #ddd;
+  width: 100%;
+}
+ 
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 50px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+ 
+.footer-logo img {
+  height: 45px;
+  margin-bottom: 15px;
+}
+ 
+.footer-logo p {
+  color: #555;
+  max-width: 300px;
+  font-size: 15px;
+}
+ 
+.footer-links h4 {
+  color: #0C616F;
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+ 
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ 
+.footer-links ul li {
+  margin-bottom: 10px;
+}
+ 
+.footer-links ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+ 
+.footer-links ul li a:hover {
+  color: #8C1D40;
+}
+ 
+.copyright {
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+  margin-top: 30px;
+}
+ 
+/* Responsive */
+@media (max-width: 900px) {
+  .main-header {
+    padding: 15px 20px;
+  }
+  
+  nav ul {
+    gap: 15px;
+  }
+  
+  .hero h1 { 
+    font-size: 36px; 
+  }
+  
+  .hero p { 
+    font-size: 16px; 
+  }
+  
+  .tabs-section { 
+    padding: 40px 15px 30px; 
+  }
+
+  .content-section {
+    padding: 0 15px 60px;
+  }
+  
+  footer { 
+    padding: 40px 15px; 
+  }
+  
+  .card {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .info-box {
+    padding: 25px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="main-header">
+<img src="logo.png" alt="Discover Qatar Logo" class="logo">
+<nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="discover-qatar.html">About Qatar</a></li>
+<li><a href="places-to-visit.html">Places to Visit</a></li>
+<li><a href="plan-your-trip.html" class="active">Plan Your Trip</a></li>
+</ul>
+</nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" style="background-image: url('airport-banner.jpg');">
+<div class="hero-content">
+<h1>Plan Your Trip</h1>
+<p>Everything you need to travel around Qatar with confidence — transport, rentals, hotels, airport info and entry requirements</p>
+<a href="#tabs" class="btn">Start Planning</a>
+</div>
+</section>
+
+<!-- Tabs Section -->
+<section class="tabs-section" id="tabs">
+<div class="tabs">
+<button class="tab-btn active" data-tab="getting-around">Getting Around</button>
+<button class="tab-btn" data-tab="car-rentals">Car Rentals</button>
+<button class="tab-btn" data-tab="where-to-stay">Where to Stay</button>
+<button class="tab-btn" data-tab="airport">Airport Guide</button>
+<button class="tab-btn" data-tab="visa">Visa Info</button>
+<button class="tab-btn" data-tab="book-now">Book Now</button>
+</div>
+</section>
+
+
+<!-- Content Section -->
+<section class="content-section">
+
+<!-- Getting Around Panel -->
+<div id="getting-around" class="tab-panel active">
+<div class="section-header">
+<h2>Getting Around</h2>
+<p>Metro, tram, taxis and cycle routes — choose how you want to explore</p>
+</div>
+
+<div class="cards">
+<div class="card">
+<img src="Doha-Metro1.jpg" alt="Metro in Qatar">
+<h3>Metro</h3>
+<p>Doha Metro connects major hubs including Hamad International Airport, Msheireb and Lusail. Fast, clean and air-conditioned — perfect for city travel.</p>
+<a href="https://www.timeoutdoha.com/travel/doha-metro-guide" target="_blank" style="display: block; width: 100%; text-align: center; padding: 12px; margin-top: 15px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s;">Learn More</a>
+</div>
+
+<div class="card">
+<img src="tram-qatar.jpeg" alt="Tram">
+<h3>Tram</h3>
+<p>Lusail and Education City trams provide smooth short-distance links and are great for exploring specific districts and attractions.</p>
+<a href="https://www.iloveqatar.net/guide/transportation/guide-lusail-tram-doha-metro-qatar" target="_blank" style="display: block; width: 100%; text-align: center; padding: 12px; margin-top: 15px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s;">Learn More</a>
+</div>
+
+<div class="card">
+<img src="karwa.jpg" alt="Taxi">
+<h3>Taxis</h3>
+<p>Karwa taxis, Uber and Careem operate across Qatar offering 24/7 service — simple, reliable and widely available.</p>
+<a href="https://www.karwa.qa/" target="_blank" style="display: block; width: 100%; text-align: center; padding: 12px; margin-top: 15px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s;">Visit Karwa</a>
+</div>
+
+<div class="card">
+<img src="cycling.jpg" alt="Cycle paths">
+<h3>Cycle</h3>
+<p>Cycle lanes and rental stations in Lusail, Corniche and Al Bidda Park make cycling a scenic option for short journeys and leisure rides.</p>
+<a href="https://www.timeoutdoha.com/sport-wellbeing/sports-features/464794-top-cycling-routes-in-qatar" target="_blank" style="display: block; width: 100%; text-align: center; padding: 12px; margin-top: 15px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s;">Learn More</a>
+</div>
+</div>
+</div>
+
+<!-- Car Rentals Panel -->
+<div id="car-rentals" class="tab-panel">
+<div class="section-header">
+<h2>Car Rentals</h2>
+<p>Flexible options — from compact cars to luxury and long-term hires</p>
+</div>
+
+<div class="cards">
+<div class="card">
+<img src="logo-avis.png" alt="Avis">
+<h3>Avis</h3>
+<p>Reliable service with a modern fleet and flexible insurance options for visitors.</p>
+</div>
+
+<div class="card">
+<img src="logo-alfuttaim.png" alt="Al Futtaim AVR">
+<h3>Al Futtaim Car Rental (AVR)</h3>
+<p>A trusted local provider offering affordable daily and monthly rentals with well-maintained vehicles.</p>
+</div>
+
+
+<div class="card">
+<img src="logo-budget.jpg" alt="Budget">
+<h3>Budget</h3>
+<p>Affordable rental options suitable for both short stays and longer visits.</p>
+</div>
+
+<div class="card">
+<img src="logo-hertz.png" alt="Hertz">
+<h3>Hertz</h3>
+<p>Internationally trusted with multiple pickup points including Hamad Airport and downtown Doha.</p>
+</div>
+</div>
+</div>
+
+<!-- Where to Stay Panel -->
+<div id="where-to-stay" class="tab-panel">
+<div class="section-header">
+<h2>Where to Stay</h2>
+<p>Find the perfect stay — from beachfront luxury to modern city hotels</p>
+</div>
+
+<div class="cards" style="max-width: 1300px; margin: 0 auto;">
+  
+  <!-- Luxury Hotels -->
+  <div class="card">
+    <img src="banana-island.png" alt="Banana Island Resort">
+    <h3>Banana Island Resort</h3>
+    <p>A private island resort with turquoise waters, overwater villas and world-class spa. <strong>★★★★★</strong></p>
+    <p style="color: #0C616F; font-weight: 700; font-size: 18px; margin: 10px 0;">$1800/night</p>
+    <a href="https://www.anantara.com/en/banana-island-doha" target="_blank" style="display: block; width: 100%; text-align: center; padding: 12px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s;">Book Now</a>
+  </div>
+
+  <div class="card">
+    <img src="salwabeach.jpg" alt="Hilton Salwa">
+    <h3>Hilton Salwa Beach Resort</h3>
+    <p>Massive beachfront resort with desert views and Qatar's largest waterpark. <strong>★★★★★</strong></p>
+    <p style="color: #0C616F; font-weight: 700; font-size: 18px; margin: 10px 0;">$1200/night</p>
+    <a href="https://www.hilton.com/en/hotels/dohsbhi-hilton-salwa-beach-resort-villas/" target="_blank" style="display: block; width: 100%; text-align: center; padding: 12px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s;">Book Now</a>
+  </div>
+
+  <div class="card">
+    <img src="ritz-sharq.jpeg" alt="Ritz Carlton Sharq Village">
+    <h3>The Ritz-Carlton Sharq Village</h3>
+    <p>Luxury village-style resort blending Qatari heritage with modern comfort. <strong>★★★★★</strong></p>
+    <p style="color: #0C616F; font-weight: 700; font-size: 18px; margin: 10px 0;">$1650/night</p>
+    <a href="https://www.ritzcarlton.com/en/hotels/dohsq-sharq-village-and-spa" target="_blank" style="display: block; width: 100%; text-align: center; padding: 12px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s;">Book Now</a>
+  </div>
+
+  <div class="card">
+    <img src="ritz-doha.jpeg" alt="Ritz Carlton Doha">
+    <h3>The Ritz-Carlton, Doha</h3>
+    <p>Iconic five-star hotel with marina views and Michelin-level dining. <strong>★★★★★</strong></p>
+    <p style="color: #0C616F; font-weight: 700; font-size: 18px; margin: 10px 0;">$1750/night</p>
+    <a href="https://www.ritzcarlton.com/en/hotels/qatar/doha" target="_blank" style="display: block; width: 100%; text-align: center; padding: 12px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s;">Book Now</a>
+  </div>
+
+  <div class="card">
+    <img src="stregis-doha.jpeg" alt="St Regis Doha">
+    <h3>St Regis Doha</h3>
+    <p>Elegant seaside stay with butler service and private beach. <strong>★★★★★</strong></p>
+    <p style="color: #0C616F; font-weight: 700; font-size: 18px; margin: 10px 0;">$2100/night</p>
+    <a href="https://www.marriott.com/en-us/hotels/dohxr-the-st-regis-doha" target="_blank" style="display: block; width: 100%; text-align: center; padding: 12px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s;">Book Now</a>
+  </div>
+
+  <div class="card">
+    <img src="rosewood.jpg" alt="Rosewood Doha">
+    <h3>Rosewood Doha</h3>
+    <p>Ultra-luxury tower with modern suites and curated wellness. <strong>★★★★★</strong></p>
+    <p style="color: #0C616F; font-weight: 700; font-size: 18px; margin: 10px 0;">$2250/night</p>
+    <a href="https://www.rosewoodhotels.com/en/doha" target="_blank" style="display: block; width: 100%; text-align: center; padding: 12px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s;">Book Now</a>
+  </div>
+
+  <div class="card">
+    <img src="fourseasons-hotel.jpg" alt="Four Seasons Doha">
+    <h3>Four Seasons Hotel Doha</h3>
+    <p>Beachfront luxury with stunning marina views and fine dining. <strong>★★★★★</strong></p>
+    <p style="color: #0C616F; font-weight: 700; font-size: 18px; margin: 10px 0;">$1950/night</p>
+    <a href="https://www.fourseasons.com/doha/" target="_blank" style="display: block; width: 100%; text-align: center; padding: 12px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s;">Book Now</a>
+  </div>
+
+  <div class="card">
+    <img src="w-hotel.jpg" alt="W Doha">
+    <h3>W Doha Hotel & Residences</h3>
+    <p>Stylish boutique hotel with modern design and rooftop pool. <strong>★★★★★</strong></p>
+    <p style="color: #0C616F; font-weight: 700; font-size: 18px; margin: 10px 0;">$1450/night</p>
+    <a href="https://www.marriott.com/en-us/hotels/dohwh-w-doha" target="_blank" style="display: block; width: 100%; text-align: center; padding: 12px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s;">Book Now</a>
+  </div>
+
+  <div class="card">
+    <img src="mandarian.jpeg" alt="Mandarin Oriental">
+    <h3>Mandarin Oriental, Doha</h3>
+    <p>Contemporary luxury hotel with elegant design and spa. <strong>★★★★★</strong></p>
+    <p style="color: #0C616F; font-weight: 700; font-size: 18px; margin: 10px 0;">$1680/night</p>
+    <a href="https://www.mandarinoriental.com/en/doha" target="_blank" style="display: block; width: 100%; text-align: center; padding: 12px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s;">Book Now</a>
+  </div>
+
+  <div class="card">
+    <img src="intercontinental.jpg" alt="InterContinental Doha">
+    <h3>InterContinental Doha</h3>
+    <p>Beachfront resort with private beach and award-winning restaurants. <strong>★★★★★</strong></p>
+    <p style="color: #0C616F; font-weight: 700; font-size: 18px; margin: 10px 0;">$1580/night</p>
+    <a href="https://www.ihg.com/intercontinental/hotels/us/en/doha/dohha/hoteldetail" target="_blank" style="display: block; width: 100%; text-align: center; padding: 12px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s;">Book Now</a>
+  </div>
+
+  <div class="card">
+    <img src="marsamalaz.jpg" alt="Marsa Malaz Kempinski">
+    <h3>Marsa Malaz Kempinski</h3>
+    <p>Palace-style resort on The Pearl with private beach. <strong>★★★★★</strong></p>
+    <p style="color: #0C616F; font-weight: 700; font-size: 18px; margin: 10px 0;">$2050/night</p>
+    <a href="https://www.kempinski.com/en/marsa-malaz-kempinski-the-pearl-doha" target="_blank" style="display: block; width: 100%; text-align: center; padding: 12px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s;">Book Now</a>
+  </div>
+
+  <div class="card">
+    <img src="raffleshotel.jpg" alt="Raffles Doha">
+    <h3>Raffles Doha</h3>
+    <p>Ultra-luxury suites with private butlers and panoramic views. <strong>★★★★★</strong></p>
+    <p style="color: #0C616F; font-weight: 700; font-size: 18px; margin: 10px 0;">$2300/night</p>
+    <a href="https://www.raffles.com/doha/" target="_blank" style="display: block; width: 100%; text-align: center; padding: 12px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s;">Book Now</a>
+  </div>
+
+  <!-- Mid-Range Hotels -->
+  <div class="card">
+    <img src="rotana2.jpg" alt="City Centre Rotana">
+    <h3>City Centre Rotana Doha</h3>
+    <p>Connected to City Center Mall with excellent dining. <strong>★★★★</strong></p>
+    <p style="color: #0C616F; font-weight: 700; font-size: 18px; margin: 10px 0;">$390/night</p>
+    <a href="https://www.rotana.com/rotanahotelandresorts/qatar/doha/citycentrerotanadoha" target="_blank" style="display: block; width: 100%; text-align: center; padding: 12px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s;">Book Now</a>
+  </div>
+
+
+  <!-- Budget Hotels -->
+  <div class="card">
+    <img src="premier-inn.jpg" alt="Premier Inn">
+    <h3>Premier Inn Doha Education City</h3>
+    <p>Comfortable budget hotel with modern rooms and great value. <strong>★★★</strong></p>
+    <p style="color: #0C616F; font-weight: 700; font-size: 18px; margin: 10px 0;">$220/night</p>
+    <a href="https://reservations.mena.premierinn.com/?adult=1&arrive=2026-01-21&chain=18100&child=0&config=initialConfig&configcode=initialConfig&currency=AED&depart=2026-01-22&dest=DOH&hotel=69661&level=chain&locale=en-GB&nocache=true&rooms=1&shell=GCF&start=availresults&template=GCFMain&theme=initialTheme&themecode=initialTheme" target="_blank" style="display: block; width: 100%; text-align: center; padding: 12px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s;">Book Now</a>
+  </div>
+
+  <div class="card">
+    <img src="ibis.jpg" alt="Ibis Doha">
+    <h3>ibis Doha</h3>
+    <p>Affordable hotel in the city center with friendly service. <strong>★★★</strong></p>
+    <p style="color: #0C616F; font-weight: 700; font-size: 18px; margin: 10px 0;">$180/night</p>
+    <a href="https://all.accor.com/hotel/9457/index.en.shtml?utm_campaign=seo+maps&utm_medium=seo+maps&utm_source=google+Maps" target="_blank" style="display: block; width: 100%; text-align: center; padding: 12px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background 0.3s;">Book Now</a>
+  </div>
+
+
+</div>
+</div>
+
+
+
+
+<!-- Airport Guide Panel -->
+<div id="airport" class="tab-panel">
+<div class="section-header">
+<h2>Hamad International Airport (DOH)</h2>
+<p>Qatar's modern gateway — facilities, duty free, lounges and transport links</p>
+</div>
+
+<div class="info-box">
+<h3>About Hamad International Airport</h3>
+<p>Hamad International Airport is a major regional hub with passenger lounges, excellent retail and dining options, family facilities, and efficient transfer connections. It is located roughly 15–20 minutes from central Doha (depending on traffic).</p>
+
+<h3>Duty Free & Shopping</h3>
+<p>The airport's duty-free offers a wide selection of perfumes, cosmetics, luxury goods, electronics, and local souvenirs. Opening hours generally correspond with flight schedules.</p>
+
+<h3>Getting To & From the Airport</h3>
+<p>Options include Doha Metro (Red Line), taxis (Karwa / ride-hailing), hotel transfers and car rental pick-up points at the terminal.</p>
+
+<div class="map-container">
+<iframe
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3603.0752460350985!2d51.55923011500307!3d25.262147533690846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45c3bdf1d4e2d3%3A0x7a66b0f252e0ef73!2sHamad%20International%20Airport!5e0!3m2!1sen!2sqa!4v1697040000000"
+allowfullscreen=""
+loading="lazy"
+referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</div>
+</div>
+
+<!-- Visa Info Panel -->
+<div id="visa" class="tab-panel">
+<div class="section-header">
+<h2>Visa & Entry</h2>
+<p>Quick guide to visitor entry requirements</p>
+</div>
+
+<div class="info-box">
+<h3>Do I need a visa?</h3>
+<p>Visa rules depend on nationality. Many countries are eligible for visa on arrival or an electronic travel authorization (ETA). Check official government sources for exact requirements before travel.</p>
+
+<h3>Common visa types</h3>
+<ul>
+<li><strong>Visa on Arrival</strong> — available to certain nationalities at the airport.</li>
+<li><strong>Pre-approved eVisa / ETA</strong> — apply online before travel if required.</li>
+<li><strong>Transit Visa</strong> — for short layovers, depending on eligibility.</li>
+</ul>
+
+<h3>Documents you may need</h3>
+<p>Valid passport (6+ months), return/onward ticket, proof of accommodation, and enough funds for your stay. Always verify conditions with your embassy or airline.</p>
+</div>
+</div>
+
+<!-- Book Now Panel -->
+<div id="book-now" class="tab-panel">
+<div class="section-header">
+<h2>Book Your Flight</h2>
+<p>Choose from top airlines flying to Qatar and book your journey today</p>
+</div>
+
+<div class="cards">
+  <div class="card">
+    <img src="Qatar_Airways_logo.svg.png" alt="Qatar Airways" style="height: 100px; object-fit: contain; background: #f5f5f5; padding: 20px;">
+    <h3>Qatar Airways</h3>
+    <p>Qatar's national carrier and a five-star airline offering world-class service, luxury cabins, and direct flights to over 160 destinations worldwide.</p>
+    <a href="https://www.qatarairways.com" target="_blank" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">Book Now</a>
+  </div>
+
+  <div class="card">
+    <img src="etihad.png" alt="Etihad Airways" style="height: 100px; object-fit: contain; background: #f5f5f5; padding: 20px;">
+    <h3>Etihad Airways</h3>
+    <p>Abu Dhabi's premium airline offering exceptional hospitality, comfortable cabins, and seamless connections across the Middle East and beyond.</p>
+    <a href="https://www.etihad.com" target="_blank" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">Book Now</a>
+  </div>
+
+  <div class="card">
+    <img src="emirates.png" alt="Emirates" style="height: 100px; object-fit: contain; background: #f5f5f5; padding: 20px;">
+    <h3>Emirates</h3>
+    <p>Dubai's world-renowned airline providing luxurious travel experiences, award-winning entertainment, and a vast global network connecting you to Qatar.</p>
+    <a href="https://www.emirates.com" target="_blank" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">Book Now</a>
+  </div>
+
+  <div class="card">
+    <img src="oman-air.png" alt="Oman Air" style="height: 100px; object-fit: contain; background: #f5f5f5; padding: 20px;">
+    <h3>Oman Air</h3>
+    <p>Oman's national carrier offering warm Arabian hospitality, modern aircraft, and convenient connections throughout the Gulf region and beyond.</p>
+    <a href="https://www.omanair.com" target="_blank" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">Book Now</a>
+  </div>
+
+  <div class="card">
+    <img src="british-airways.png" alt="British Airways" style="height: 100px; object-fit: contain; background: #f5f5f5; padding: 20px;">
+    <h3>British Airways</h3>
+    <p>The UK's flagship airline connecting Qatar to London and beyond with comfortable service, extensive routes, and flexible booking options.</p>
+    <a href="https://www.britishairways.com" target="_blank" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">Book Now</a>
+  </div>
+
+  <div class="card">
+    <img src="turkish-airlines.png" alt="Turkish Airlines" style="height: 100px; object-fit: contain; background: #f5f5f5; padding: 20px;">
+    <h3>Turkish Airlines</h3>
+    <p>Europe's best airline flying to more countries than any other, offering excellent service and convenient Istanbul connections to Qatar.</p>
+    <a href="https://www.turkishairlines.com" target="_blank" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">Book Now</a>
+  </div>
+
+  <div class="card">
+    <img src="finnair-new-logo.png" alt="Finnair" style="height: 100px; object-fit: contain; background: #f5f5f5; padding: 20px;">
+    <h3>Finnair</h3>
+    <p>Nordic excellence with the shortest routes between Europe and Asia, offering modern aircraft, quality service, and smooth Helsinki connections.</p>
+    <a href="https://www.finnair.com" target="_blank" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">Book Now</a>
+  </div>
+
+  <div class="card">
+    <img src="air-india.png" alt="Air India" style="height: 100px; object-fit: contain; background: #f5f5f5; padding: 20px;">
+    <h3>Air India</h3>
+    <p>India's national carrier connecting Qatar to major Indian cities with traditional hospitality, comfortable flights, and competitive fares.</p>
+    <a href="https://www.airindia.com" target="_blank" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background: #0A4C56; color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">Book Now</a>
+  </div>
+</div>
+</div>
+
+</section>
+
+<!-- Footer -->
+<footer>
+<div class="footer-content">
+<div class="footer-logo">
+<img src="logo.png" alt="Logo">
+<p>Your gateway to experiencing the beauty, culture, and hospitality of Qatar.</p>
+</div>
+<div class="footer-links">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="discover-qatar.html">About Qatar</a></li>
+<li><a href="places-to-visit.html">Places to Visit</a></li>
+<li><a href="plan-your-trip.html">Plan Your Trip</a></li>
+</ul>
+</div>
+</div>
+<p class="copyright">© 2025 Discover Qatar. All rights reserved.</p>
+</footer>
+
+<script>
+// Tab functionality
+const tabBtns = document.querySelectorAll('.tab-btn');
+const tabPanels = document.querySelectorAll('.tab-panel');
+
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Remove active class from all buttons and panels
+    tabBtns.forEach(b => b.classList.remove('active'));
+    tabPanels.forEach(p => p.classList.remove('active'));
+    
+    // Add active class to clicked button
+    btn.classList.add('active');
+    
+    // Show corresponding panel
+    const tabId = btn.getAttribute('data-tab');
+    document.getElementById(tabId).classList.add('active');
+    
+    // Smooth scroll to content
+    document.querySelector('.content-section').scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  });
+});
+
+// Start Planning button smooth scroll
+document.querySelector('.hero .btn').addEventListener('click', (e) => {
+  e.preventDefault();
+  document.getElementById('tabs').scrollIntoView({ 
+    behavior: 'smooth',
+    block: 'start'
+  });
+});
+</script>
+
+</body>
+</html>

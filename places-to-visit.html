@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Places to Visit - Discover Qatar</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .category-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+  }
+  
+  .category-btn {
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    padding: 12px 28px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    color: #333;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    font-family: 'Optima', sans-serif;
+  }
+  
+  .category-btn:hover {
+    border-color: #0C616F;
+    color: #0C616F;
+    transform: translateY(-2px);
+  }
+  
+  .category-btn.active {
+    background: #0C616F;
+    color: #fff;
+    border-color: #0C616F;
+  }
+  
+  .places-grid {
+    display: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 40px;
+  }
+  
+  .places-grid.active {
+    display: flex;
+  }
+</style>
+<script>
+function showPlaces(type) {
+  // Remove active class from all buttons
+  const buttons = document.querySelectorAll('.category-btn');
+  buttons.forEach(btn => btn.classList.remove('active'));
+  
+  // Add active class to clicked button
+  event.target.classList.add('active');
+  
+  // Hide all groups - FIXED: Added sights here
+  document.getElementById("restaurants").classList.remove('active');
+  document.getElementById("souqs").classList.remove('active');
+  document.getElementById("malls").classList.remove('active');
+  document.getElementById("sights").classList.remove('active');
+
+  // Show selected
+  document.getElementById(type).classList.add('active');
+}
+
+// Show restaurants by default on page load
+window.onload = function() {
+  const firstButton = document.querySelector('[onclick*="restaurants"]');
+  if (firstButton) {
+    firstButton.classList.add('active');
+  }
+  document.getElementById('restaurants').classList.add('active');
+}
+</script>
+</head>
+<body>
+
+  <!-- Header -->
+<header class="main-header">
+  <img src="logo.png" alt="Discover Qatar Logo" class="logo">
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="discover-qatar.html">About Qatar</a></li>
+      <li><a href="places-to-visit.html" class="active">Places to Visit</a></li>
+      <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <!-- Hero Section -->
+<section class="hero" style="background-image: url('vendomebanner.jpg'); background-size: cover; background-position: center;">
+  <div class="hero-content">
+    <h1>Places to Visit in Qatar</h1>
+    <p>From traditional souqs to world-class malls and fine dining, Qatar offers endless experiences for every traveler</p>
+    <a href="#explore" class="btn">Start Exploring</a>
+  </div>
+</section>
+
+  <!-- Places to Visit Section -->
+<section class="places trending" id="explore">
+  <h2>Discover Top Attractions</h2>
+  <p>Select a category to explore Qatar's best destinations</p>
+
+  <!-- Category Buttons -->
+<div class="category-buttons">
+  <button onclick="showPlaces('restaurants')" class="category-btn">Restaurants</button>
+  <button onclick="showPlaces('souqs')" class="category-btn">Souqs</button>
+  <button onclick="showPlaces('malls')" class="category-btn">Shopping Malls</button>
+  <button onclick="showPlaces('sights')" class="category-btn">Sights</button>
+</div>
+
+
+
+<!-- Restaurants -->
+<div id="restaurants" class="places-grid cards">
+  <!-- Luxury -->
+  <div class="card">
+    <img src="IDAM.jpg" alt="IDAM Restaurant">
+    <h3>IDAM by Alain Ducasse</h3>
+    <p>Located in the Museum of Islamic Art, this fine dining restaurant offers modern Mediterranean cuisine with stunning views of Doha's skyline. <strong>Type:</strong> Luxury. <strong>Highlights:</strong> Michelin-starred chef, romantic ambiance, art museum location.</p>
+  </div>
+
+  
+  <!-- Budget Friendly -->
+  <div class="card">
+    <img src="teatime.jpg" alt="Tea Time">
+    <h3>Tea Time</h3>
+    <p>Doha-born restaurant chain has been serving tasty, on-the-go bites and drinks, all made from the freshest, top quality ingredients.<strong>Type:</strong> Budget-Friendly. <strong>Highlights:</strong> Traditional karak.</p>
+  </div>
+  
+  <!-- Luxury -->
+  <div class="card">
+    <img src="SMAT.jpg" alt="SMAT Qatar">
+    <h3>SMAT Qatar</h3>
+    <p>Contemporary Qatari cuisine with a modern twist, offering a taste of local hospitality and culture. <strong>Type:</strong> Luxury. <strong>Highlights:</strong> Traditional dishes reimagined, cultural experience, elegant setting.</p>
+  </div>
+  
+  <!-- Budget-friendly -->
+  <div class="card">
+    <img src="damasca.jpg" alt="Damasca One Restaurant">
+    <h3>Damasca One Restaurant</h3>
+    <p>A popular spot in Souq Waqif serving delicious Syrian cuisine at affordable prices. <strong>Type:</strong> Budget-friendly. <strong>Highlights:</strong> Shawarma, grilled meats, authentic atmosphere, family-friendly.</p>
+  </div>
+</div>
+
+
+
+<!-- Souqs -->
+<div id="souqs" class="places-grid cards">
+  <div class="card">
+    <img src="souqqaqif-image.jpg" alt="Souq Waqif">
+    <h3>Souq Waqif</h3>
+    <p>One of Doha's most famous markets, filled with spices, textiles, souvenirs, and traditional Qatari handicrafts. <strong>Highlights:</strong> Traditional restaurants, shisha cafes, and the Falcon Souq.</p>
+  </div>
+  
+  <div class="card">
+    <img src="gold-souq.jpg" alt="Gold Souq">
+    <h3>Gold Souq</h3>
+    <p>Located near Souq Waqif, it showcases intricate gold jewelry and precious gems — a true treasure trove. <strong>Highlights:</strong> Custom jewelry design, traditional Arabic gold pieces, and competitive pricing.</p>
+  </div>
+  
+  <div class="card">
+    <img src="falcon-souq.jpg" alt="Falcon Souq">
+    <h3>Falcon Souq</h3>
+    <p>A unique market where visitors can see traditional falconry gear and even live falcons — part of Qatar's heritage. <strong>Highlights:</strong> Falcon hospital visits, traditional hunting equipment, and cultural insights.</p>
+  </div>
+  
+  <div class="card">
+    <img src="souqalwakrah.jpg" alt="Souq Al Wakrah">
+    <h3>Souq Al Wakrah</h3>
+    <p>A beautifully restored traditional market in the coastal town of Al Wakrah with authentic architecture. <strong>Highlights:</strong> Waterfront views, art galleries, traditional crafts, and peaceful atmosphere away from the city.</p>
+  </div>
+</div>
+
+
+  <!-- Shopping Malls -->
+  <div id="malls" class="places-grid cards">
+    <div class="card">
+      <img src="MOQ.jpg" alt="Mall of Qatar">
+      <h3>Mall of Qatar</h3>
+      <p>Qatar's largest mall with over 500 stores including luxury brands, dining options, and entertainment. <strong>Highlights:</strong> IMAX cinema, family entertainment center, and the Galeries Lafayette.</p>
+    </div>
+    
+    <div class="card">
+      <img src="VILLAGIO2.jpg" alt="Villaggio Mall">
+      <h3>Villaggio Mall</h3>
+      <p>A Venice-themed shopping destination with luxury brands and charming architecture. <strong>Highlights:</strong> Indoor canal with gondola rides, Olympic-size ice rink, and Italian-inspired ambiance.</p>
+    </div>
+    
+    <div class="card">
+      <img src="doha-festival-city.jpg" alt="Doha Festival City">
+      <h3>Doha Festival City</h3>
+      <p>A massive entertainment and shopping complex offering family fun and retail therapy. <strong>Highlights:</strong> IKEA, VOX Cinemas, Angry Birds World theme park, and SnowDunes indoor snow park.</p>
+    </div>
+    
+    <div class="card">
+      <img src="city-center.jpg" alt="City Center Mall">
+      <h3>City Center Mall</h3>
+      <p>A popular shopping hub in West Bay with international brands and dining options. <strong>Highlights:</strong> Carrefour hypermarket, family entertainment, and convenient parking.</p>
+    </div>
+    
+    <div class="card">
+      <img src="alhazm.jpg" alt="Al Hazm Mall">
+      <h3>Al Hazm Mall</h3>
+      <p>An ultra-luxury shopping destination inspired by Ottoman and Andalusian architecture. <strong>Highlights:</strong> High-end fashion brands like Gucci and Louis Vuitton, fine dining, and stunning marble interiors.</p>
+    </div>
+    
+    <div class="card">
+      <img src="vendome-lusail.jpg" alt="Vendôme Mall">
+      <h3>Vendôme Mall</h3>
+      <p>A luxury shopping mall in Lusail with a French-inspired elegant design. <strong>Highlights:</strong> Designer boutiques, gourmet restaurants, and a sophisticated atmosphere.</p>
+    </div>
+    
+    <div class="card">
+      <img src="tawarmall.jpg" alt="Tawar Mall">
+      <h3>Tawar Mall</h3>
+      <p>A convenient neighborhood mall offering everyday shopping and services. <strong>Highlights:</strong> Lulu Hypermarket, affordable fashion stores, and family-friendly dining.</p>
+    </div>
+    
+    <div class="card">
+      <img src="ezdanmall2.jpg" alt="Ezdan Mall">
+      <h3>Ezdan Mall</h3>
+      <p>A popular community mall known for its variety of shops and entertainment. <strong>Highlights:</strong> Al Meera supermarket, fashion outlets, children's play areas, and food court.</p>
+    </div>
+  </div>
+
+<!-- Sights -->
+<div id="sights" class="places-grid cards">
+  <div class="card">
+    <img src="minaport.jpg" alt="Mina District">
+    <h3>Mina District (Old Doha Port)</h3>
+    <p>A historic waterfront area showcasing Doha's maritime heritage with traditional dhows and cultural landmarks. <strong>Highlights:</strong> Traditional wooden dhows, fish market, waterfront promenade, authentic local atmosphere, heritage architecture.</p>
+  </div>
+  
+  <div class="card">
+    <img src="miaqatar.jpg" alt="Museum of Islamic Art">
+    <h3>Museum of Islamic Art (MIA)</h3>
+    <p>An architectural masterpiece designed by I.M. Pei, showcasing 1,400 years of Islamic art and artifacts from three continents. <strong>Highlights:</strong> Iconic building design, rare manuscripts, ceramics and textiles, waterfront park, MIA Park, IDAM restaurant.</p>
+  </div>
+  
+  <div class="card">
+    <img src="nationalmuseum2.jpg" alt="National Museum of Qatar">
+    <h3>National Museum of Qatar</h3>
+    <p>A rose-shaped architectural wonder designed by Jean Nouvel, telling the story of Qatar from ancient times to the present day. <strong>Highlights:</strong> Desert rose-inspired design, immersive exhibits, heritage galleries, lagoon views, Jiwan restaurant by Alain Ducasse.</p>
+  </div>
+  
+  <div class="card">
+    <img src="kataratower.jpg" alt="Katara Cultural Village">
+    <h3>Katara Cultural Village</h3>
+    <p>Qatar's premier cultural destination featuring art galleries, theaters, restaurants, and a beautiful beach along the Corniche. <strong>Highlights:</strong> Amphitheater, mosques, art exhibitions, multicultural restaurants, beach access, cultural festivals and events.</p>
+  </div>
+  
+  <div class="card">
+    <img src="qnl-qatar.jpg" alt="Qatar National Library">
+    <h3>Qatar National Library</h3>
+    <p>A stunning modern library designed by OMA, offering vast collections, study spaces, and cultural programs in Education City. <strong>Highlights:</strong> Futuristic architecture, over 1 million books, Heritage Library collection, free membership, quiet study areas, digital resources.</p>
+  </div>
+  
+  <div class="card">
+    <img src="321sportsmuseum.jpg" alt="3-2-1 Qatar Olympic and Sports Museum">
+    <h3>3-2-1 Qatar Olympic and Sports Museum</h3>
+    <p>An interactive sports museum celebrating Olympic heritage and Qatar's sporting achievements with engaging exhibits. <strong>Highlights:</strong> Olympic torch collection, interactive displays, World Cup 2022 exhibits, sports memorabilia, Hall of Athletes, hands-on activities.</p>
+  </div>
+</div>
+
+</section>
+
+  <!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-logo">
+      <img src="logo.png" alt="Logo">
+      <p>Your gateway to experiencing the beauty, culture, and hospitality of Qatar.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="discover-qatar.html">About Qatar</a></li>
+        <li><a href="places-to-visit.html">Places to Visit</a></li>
+        <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="copyright">© 2025 Discover Qatar. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
